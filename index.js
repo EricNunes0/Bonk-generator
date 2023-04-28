@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const fileupload = require('express-fileupload');
+//const fileupload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const path = require('path');
+//const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb'
 }));
-app.use(fileupload({
+/*app.use(fileupload({
     useTempFiles: true,
     tempFileDir: path.join(__dirname + "temp")
-}));
+}));*/
 app.use(cors());
 
 /* Configurar para que o Node.js acesse a pasta public */
