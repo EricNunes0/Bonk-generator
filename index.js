@@ -15,7 +15,7 @@ const Alert = require('./robot/alert');
 
 /* Criando app express */
 const app = express();
-const port = process.env.PORT;
+const port = 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -44,5 +44,5 @@ app.post(`/result`, function(req, res) {
 
 app.listen(port, () => {
     LoadBot(client, TOKEN);
-    console.log(`🐶 Servidor ligado na porta ${port}!!`);
+    console.log(`🐶 Servidor ligado na porta ${port}!`);
 });
