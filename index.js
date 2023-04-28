@@ -33,7 +33,8 @@ app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
 app.get(`/`, (req, res) => {
-    res.sendFile(__dirname + "\\index.html");
+    console.log(__dirname);
+    res.sendFile(__dirname + "\\public\\pages\\index.html");
 });
 
 app.post(`/result`, function(req, res) {
