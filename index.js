@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const fileupload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const path = require('path');const dotenv = require('dotenv');
+const path = require('path');
+const dotenv = require('dotenv');
 dotenv.config();
 
 /* Bot do Discord */
@@ -42,5 +43,5 @@ app.post(`/result`, function(req, res) {
 
 app.listen(port, () => {
     LoadBot(client, TOKEN);
-    console.log(`🐶 Servidor ligado na porta ${port}!`);
+    console.log(`🐶 Servidor ligado na porta ${port}!!`);
 });
