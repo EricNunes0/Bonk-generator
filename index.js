@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({
     useTempFiles: true,
     tempFileDir: path.join(__dirname + "temp")
 }));*/
-app.use(cors());
 
 /* Configurar para que o Node.js acesse a pasta public */
 app.use(express.static(__dirname + '/public'));
