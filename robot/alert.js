@@ -10,7 +10,7 @@ module.exports = async (client, content) => {
         ctx.drawImage(imageLoaded, 0, 0, canvas.width, canvas.height);     
         const attachment = new AttachmentBuilder(canvas.toBuffer(), {name: `bonk-generator.png`});
         const alertChannel = client.channels.cache.get(`996780615393345636`);
-        const alertEmbed = new EmbedBuilder().setTitle(`<:c_Dog:942871347841892482> Novo bonk!`).setColor(`#ff5530`).setImage(`attachment://bonk-generator.png`).setTimestamp();
+        const alertEmbed = new EmbedBuilder().setTitle(`<:c_Dog:942871347841892482> Novo bonk gerado!`).setColor(`#ff5530`).setImage(`attachment://bonk-generator.png`).setTimestamp();
         alertChannel.send({embeds: [alertEmbed], files: [attachment]});
     } catch (e) {
         console.error(e);
