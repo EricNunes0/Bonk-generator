@@ -128,3 +128,9 @@ function clearBonkImage() {
     imagesSaved.bonk0 = null;
     imagesSaved.bonk1 = null;
 };
+
+/* Converter canvas em imagem */
+function canvasToImage() {
+    let canvas = document.getElementById('bonk-canvas');
+    document.getElementById('input-canvas-image').value = canvas.toDataURL();
+}
