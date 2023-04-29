@@ -1,0 +1,39 @@
+* {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Body da página de sent */
+.sent-body {
+    background-image: url("https://png.pngtree.com/png-clipart/20230223/original/pngtree-solar-term-autumn-equinox-autumn-scenery-girl-png-image_8962925.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Parte principal da página sent */
+.sent-main {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 5%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
+
+/* Título do footer */
+.footer-title {
+    color: rgba(100, 100, 100, 0.7);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
+
+/* Descrição do footer */
+.footer-description {
+    color: rgba(100, 100, 100, 0.5);
+    font-size: 10pt;
+    margin: 0;
+}

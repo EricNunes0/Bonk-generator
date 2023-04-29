@@ -13,8 +13,13 @@ var imagesSaved = {
 };
 
 /* Baixar canvas */
-let imageDownload = document.getElementById('bonk-canvas').toDataURL("image/png");
-document.getElementById("download").href = imageDownload;
+function generateDownloadLink() {
+    let format = document.querySelector("#input-canvas-format");
+    console.log(format.value);
+    let imageDownload = document.getElementById('bonk-canvas').toDataURL(`image/${format.value}`, 1.0).replace(`image/png`, `image/${format.value}`);
+    document.getElementById("download").href = imageDownload;
+    document.getElementById("download").download = `bonk.${format.value}`;
+}
 
 bonkInputCenary.addEventListener("change", function() {
     const reader = new FileReader();
@@ -23,8 +28,7 @@ bonkInputCenary.addEventListener("change", function() {
         BonkDogEditor(upImg, 0, 0);
     });
     reader.readAsDataURL(this.files[0]);
-    let imageDownloadLink = document.getElementById('bonk-canvas').toDataURL("image/png");
-    document.getElementById("download").href = imageDownloadLink;
+    generateDownloadLink();
 });
 
 bonkInput0.addEventListener("change", function() {
@@ -34,8 +38,7 @@ bonkInput0.addEventListener("change", function() {
         BonkDogEditor(upImg, 1, 0);
     });
     reader.readAsDataURL(this.files[0]);
-    let imageDownloadLink = document.getElementById('bonk-canvas').toDataURL("image/png");
-    document.getElementById("download").href = imageDownloadLink;
+    generateDownloadLink();
 });
 
 bonkInput1.addEventListener("change", function() {
@@ -45,13 +48,11 @@ bonkInput1.addEventListener("change", function() {
         BonkDogEditor(upImg, 1, 1);
     });
     reader.readAsDataURL(this.files[0]);
-    let imageDownloadLink = document.getElementById('bonk-canvas').toDataURL("image/png");
-    document.getElementById("download").href = imageDownloadLink;
+    generateDownloadLink();
 });
 
 bonkInputDownload.addEventListener("click", function() {
-    let imageDownloadLink = document.getElementById('bonk-canvas').toDataURL("image/png");
-    document.getElementById("download").href = imageDownloadLink;
+    generateDownloadLink();
 })
 
 /* Editar canvas (imagem) */

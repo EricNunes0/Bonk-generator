@@ -21,30 +21,67 @@
                 <canvas id = "bonk-canvas" width="741px" height="556px"></canvas>
             </section>
             <section class = "form-section">
-                <form class = "bonk-form">
-                    <input type = "file" class = "inputs fc-white" id = "bonk-file-input-cenary" accept = "image/jpeg, image/png, image/jpg"/>
-                    <output></output>
-                    <input type = "file" class = "inputs fc-white" id = "bonk-file-input-0" accept = "image/jpeg, image/png, image/jpg"/>
-                    <output></output>
-                    <input type = "file" class = "inputs fc-white" id = "bonk-file-input-1" accept = "image/jpeg, image/png, image/jpg"/>
-                    <output></output>
-                    <a href = "#" id = "download" download = "bonk.png">
-                        <button type = "button" name = "bonk-download" class = "bonk-buttons fc-white" id =   "bonk-file-input-download">Baixar</button>
-                    </a>
-                    <button type = "button" name = "bonk-clear" class = "bonk-buttons fc-white" id = "bonk-file-input-clear" onclick = "clearBonkImage()">Limpar</button>
-                </form>
-                <form class = "bonk-form-submit" method = "post" action = "/result" onsubmit = "canvasToImage()">
-                    <input type = "hidden" name = "input-canvas-name" id = "input-canvas-image">
-                    <button type = "submit" name = "bonk-submit" class = "bonk-buttons fc-white" id = "bonk-file-input-submit">Compartilhar</button>
-                </form>
+                <div class = "form-container">
+                    <h1 class = "bonk-form-title">Bonk Generator</h1>
+                    <p class = "bonk-form-description">Crie seus próprios memes do Bonk Dog</p>
+                    <div class = "forms-div">
+                        <form class = "bonk-form">
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <input type = "file" class = "inputs fc-white" id = "bonk-file-input-cenary" accept = "image/jpeg, image/png, image/jpg"/>
+                                <output></output>
+                                <img src = "https://i.imgur.com/WjNHdOu.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Cenário</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <input type = "file" class = "inputs fc-white" id = "bonk-file-input-0" accept = "image/jpeg, image/png, image/jpg"/>
+                                <output></output>
+                                <img src = "https://i.imgur.com/iIhG20U.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Bonk 1</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <input type = "file" class = "inputs fc-white" id = "bonk-file-input-1" accept = "image/jpeg, image/png, image/jpg"/>
+                                <output></output>
+                                <img src = "https://i.imgur.com/HLxtRoF.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Bonk 2</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <button type = "button" name = "bonk-clear" class = "bonk-buttons fc-white" id = "bonk-file-input-clear" onclick = "clearBonkImage()"></button>
+                                <img src = "https://i.imgur.com/cDxZtU7.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Apagar</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <a href = "#" id = "download" download = "bonk.png">
+                                    <button type = "button" name = "bonk-download" class = "bonk-buttons fc-white" id =   "bonk-file-input-download"></button>
+                                </a>
+                                <img src = "https://i.imgur.com/iGys1U5.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Baixar</span>
+                            </div>
+                        </form>
+                        <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
+                            <input type = "hidden" name = "input-canvas-name" id = "input-canvas-image">
+                            <input type = "hidden" name = "input-canvas-format" value = "png" id = "input-canvas-format">
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-input-format"></button>
+                                <img src = "https://i.imgur.com/TTZTZfZ.png" class = "input-images" id = "format-image"/>
+                                <span class = "input-area-spans">Formato</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "cenary-area">
+                                <button type = "submit" name = "bonk-submit" class = "bonk-buttons fc-white" id = "bonk-file-input-submit"></button>
+                                <img src = "https://i.imgur.com/s0u2cso.png" class = "input-images" id = "cenary-image"/>
+                                <span class = "input-area-spans">Enviar</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </div>
-        <div class = "bonk-footer">
-            <footer>
-                <p>Criado por Eric Nunes</p>
+        <div class = "bonk-footer-div">
+            <footer class = "bonk-footer">
+                <p class = "footer-createdby">Criado por Eric Nunes</p>
             </footer>
         </div>
     </div>
     <script type = "text/javascript" src = "scripts/bonk.js"></script>
+    <script type = "text/javascript" src = "scripts/format.js" defer></script>
 </body>
 </html>

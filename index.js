@@ -34,13 +34,13 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(__dirname + '/public'));
 
 app.get(`/`, (req, res) => {
-    console.log(__dirname);
     res.sendFile(__dirname + "/public/pages/index.html");
 });
 
-app.post(`/result`, function(req, res) {
-    res.send(req.body);
+app.post(`/`, function(req, res) {
+    res.status(200).sendFile(__dirname + "\\public\\pages\\sent.html");
     Alert(client, req.body);
+    //res.end();
 });
 
 app.listen(process.env.PORT || port, () => {

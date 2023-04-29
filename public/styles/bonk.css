@@ -4,14 +4,18 @@
     text-align: center;
 }
 
+:root {
+    --font-family-courier: 'Courier New', Courier, monospace;
+}
+
 body {
     background-color: rgb(240, 240, 240);
     background-image: url("https://i.imgur.com/N2xjLwn.png");
     background-position: center;
     background-size: 600px;
     animation-name: backBonkAnimation;
-    animation-duration: 10s;
-    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+    animation-duration: 15s;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 
@@ -20,7 +24,7 @@ body {
         background-position: 0%;
     }
     50% {
-        background-position: 10%;
+        background-position: 10% 10%;
     }
     100% {
         background-position: 0%;
@@ -44,7 +48,7 @@ body {
 
 .nav-title {
     font-size: 24pt;
-    font-weight: 100;
+    font-weight: bold;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
 }
 
@@ -56,20 +60,111 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* Alinhar sessões de canvas e botões */
 .bonk-page-flex {
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 20px;
+}
+
+@media screen and (min-width: 800px) {
+    .bonk-page-flex {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .bonk-page-flex {
+        flex-direction: column;
+    }
+}
+
+/* Sessão da imagem do bonk */
+.image-section {
+    margin: 2.5%;
+}
+
+/* Canvas da imagem do bonk */
+#bonk-canvas {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 15px;
+    background-image: linear-gradient(180deg, rgba(240, 240, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 800px) {
+    #bonk-canvas {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #bonk-canvas {
+        width: 90%;
+    }
 }
 
 /* Sessão do formulário do bonk */
 .form-section {
-    width: 80%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    margin: 2.5%;
+}
+
+@media screen and (min-width: 800px) {
+    .form-section {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .form-section {
+        width: 90%;
+    }
+}
+
+.form-container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 15px;
+}
+
+/* Título dos formulários */
+.bonk-form-title {
+    color: #404040;
+    font-size: 20pt;
+    font-family: var(--font-family-courier);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Descrição dos formulários */
+.bonk-form-description {
+    color: #808080;
+    font-size: 10pt;
+    font-family: var(--font-family-courier);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Div dos formulários */
+.forms-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fff;
 }
 
 /* Formulário do bonk */
@@ -83,26 +178,37 @@ body {
     gap: 10px;
 }
 
-.image-section {
+/* Formulário de submit */
+.bonk-form-submit {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-#bonk-canvas {
-    width: 55%;
-    border: 2px dotted rgb(130, 100, 80);
+/* Áreas dos botões (imagem, input, texto) */
+.bonk-input-areas {
+    width: 80px;
+    height: 100px;
+    border: 2px dashed rgba(100, 50, 15, 0.3);
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 15px;
-    background-image: linear-gradient(180deg, rgba(240, 240, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    transition: all 0.2s;
 }
 
-.inputs {
-    width: 10rem;
-    height: 2.5rem;
-    color: transparent;
-    box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 15px;
+.bonk-input-areas:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    filter: brightness(0.95);
+}
+
+/* Inputs de arquivos */
+.inputs, .bonk-buttons {
+    position: absolute;
+    width: 80px;
+    height: 100px;
 }
 
 .inputs::-webkit-file-upload-button {
@@ -110,17 +216,11 @@ body {
 }
 
 .inputs::before {
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: -webkit-linear-gradient(90deg, rgba(220, 220, 220, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    color: black;
-    font-size: 14pt;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
-    border: 2px solid #606060;
-    border-radius: 25px;
+    background-color: transparent;
     outline: none;
     white-space: nowrap;
     user-select: none;
@@ -128,29 +228,8 @@ body {
     cursor: pointer;
 }
 
-.inputs#bonk-file-input-cenary::before {
-    content: 'Cenário';
-}
-
-.inputs#bonk-file-input-0::before {
-    content: 'Bonk 1';
-}
-
-.inputs#bonk-file-input-1::before {
-    content: 'Bonk 2';
-}
-
-.inputs#bonk-file-input-download::before {
-    content: 'Baixar';
-}
-
-.inputs:hover::before {
-    filter: brightness(0.95);
+.inputs:hover {
     cursor: pointer;
-}
-
-.inputs:active {
-    outline: 0;
 }
 
 .inputs:active::before {
@@ -159,19 +238,41 @@ body {
 
 /* Botão de download */
 .bonk-buttons {
-    width: 150px;
-    height: 40px;
-    background-image: -webkit-linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 230, 1) 100%);
-    color: #000;
-    font-size: 14pt;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
-    border: 2px solid #606060;
-    border-radius: 25px;
+    background-color: transparent;
+    border: 0px;
     transition: all 0.2s;
 }
 
 .bonk-buttons:hover {
     filter: brightness(0.95);
     cursor: pointer;
+}
+
+/* Imagem dos botões */
+.input-images {
+    width: 80px;
+    height: 80px;
+}
+
+/* Spans dos botões */
+.input-area-spans {
+    color: rgb(35, 30, 60);
+    font-size: 10pt;
+    font-family: var(--font-family-courier);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Footer da página */
+.bonk-footer {
+    background-color: #606060;
+    padding: 20px;
+}
+
+/* Texto de quem criou o site */
+.footer-createdby {
+    color: #fff;
+    font-size: 12pt;
+    font-family: var(--font-family-courier);
+    font-weight: lighter;
 }
