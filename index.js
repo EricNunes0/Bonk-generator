@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get(`/`, (req, res) => {
     console.log(__dirname);
-    res.sendFile(__dirname + "\\public\\pages\\index.html");
+    res.sendFile(__dirname + "/public/pages/index.html");
 });
 
 app.post(`/result`, function(req, res) {
