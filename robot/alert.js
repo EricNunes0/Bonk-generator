@@ -9,7 +9,7 @@ module.exports = async (client, content) => {
         const imageLoaded = await Canvas.loadImage(dataURL);   
         ctx.drawImage(imageLoaded, 0, 0, canvas.width, canvas.height);    
         const attachment = new AttachmentBuilder(canvas.toBuffer(), {name: `bonk-generator.png`});
-        const alertChannel = client.channels.cache.get(`996780615393345636`);
+        const alertChannel = client.channels.cache.get(`740760158098948097`);
         const alertEmbed = new EmbedBuilder().setTitle(`<:c_Dog:942871347841892482> Bonk!`).setColor(`#ff5530`).setImage(`attachment://bonk-generator.png`).setTimestamp();
         alertChannel.send({embeds: [alertEmbed], files: [attachment]});
     } catch (e) {
