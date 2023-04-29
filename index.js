@@ -15,6 +15,7 @@ const Alert = require('./robot/alert');
 
 /* Criando app express */
 const app = express();
+//const router = express.Router();
 const port = 3001;
 
 app.use(cors());
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb'
 }));
+
 /*app.use(fileupload({
     useTempFiles: true,
     tempFileDir: path.join(__dirname + "temp")
@@ -41,7 +43,7 @@ app.post(`/result`, function(req, res) {
     Alert(client, req.body);
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     LoadBot(client, TOKEN);
     console.log(`🐶 Servidor ligado na porta ${port}!`);
 });
