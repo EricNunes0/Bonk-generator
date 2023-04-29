@@ -133,8 +133,6 @@ function clearBonkImage() {
 function canvasToImage() {
     let canvas = document.getElementById('bonk-canvas');
     let dataURL = canvas.toDataURL();
-    let alertImage = new Image();
-    alertImage.src = dataURL;
-    document.getElementById('input-canvas-image').value = alertImage;
+    document.getElementById('input-canvas-image').value = dataURL;
     
 }
