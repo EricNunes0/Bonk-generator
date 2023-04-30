@@ -49,6 +49,21 @@
                                 <img src = "https://i.imgur.com/cDxZtU7.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Apagar</span>
                             </div>
+                        </form>
+                        <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
+                            <input type = "hidden" name = "input-canvas-name" id = "input-canvas-image">
+                            <input type = "hidden" name = "input-canvas-format" value = "png" id = "input-canvas-format">
+                            <input type = "hidden" name = "input-canvas-type" value = "0" id = "input-canvas-format">
+                            <div class = "bonk-input-areas" id = "bonk-type-area">
+                                <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-input-type" onclick = "bonkBase()"></button>
+                                <img src = "https://i.imgur.com/SCcRfyt.png" class = "input-images" id = "version-image"/>
+                                <span class = "input-area-spans" id = "version-span">Versão 1</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "format-area">
+                                <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-input-format"></button>
+                                <img src = "https://i.imgur.com/TTZTZfZ.png" class = "input-images" id = "format-image"/>
+                                <span class = "input-area-spans">Formato</span>
+                            </div>
                             <div class = "bonk-input-areas" id = "cenary-area">
                                 <a href = "#" id = "download" download = "bonk.png">
                                     <button type = "button" name = "bonk-download" class = "bonk-buttons fc-white" id = "bonk-file-input-download"></button>
@@ -56,22 +71,21 @@
                                 <img src = "https://i.imgur.com/iGys1U5.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Baixar</span>
                             </div>
-                        </form>
-                        <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
-                            <input type = "hidden" name = "input-canvas-name" id = "input-canvas-image">
-                            <input type = "hidden" name = "input-canvas-format" value = "png" id = "input-canvas-format">
-                            <div class = "bonk-input-areas" id = "cenary-area">
-                                <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-input-format"></button>
-                                <img src = "https://i.imgur.com/TTZTZfZ.png" class = "input-images" id = "format-image"/>
-                                <span class = "input-area-spans">Formato</span>
-                            </div>
                             <div class = "bonk-input-areas" id = "cenary-area">
                                 <button type = "submit" name = "bonk-submit" class = "bonk-buttons fc-white" id = "bonk-file-input-submit"></button>
                                 <img src = "https://i.imgur.com/s0u2cso.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Enviar</span>
                             </div>
                         </form>
+                            <input type = "range" id = "bonk-file-input-red" max = "255" value = "0"/>
+                            <input type = "range" id = "bonk-file-input-green" max = "255" value = "0"/>
+                            <input type = "range" id = "bonk-file-input-blue" max = "255" value = "0"/>
+                            <button type = "button" id = "bonk-file-confirm-rgb" onclick = "rgbBonkEvent()">Alterar cor</button>
                     </div>
+                    <!--<audio controls autoplay loop>
+                        <source src = "audios\aud_BG(8).wav" type = "audio/wav">
+                        Bonk Audio
+                    </audio>-->
                 </div>
             </section>
         </div>
