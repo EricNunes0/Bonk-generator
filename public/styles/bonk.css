@@ -204,6 +204,15 @@ body {
     filter: brightness(0.95);
 }
 
+/* Área desativada */
+.bonk-input-areas.disabled {
+    filter: grayscale(1);
+}
+
+.bonk-input-areas.disabled:hover {
+    filter: grayscale(1);
+}
+
 /* Inputs de arquivos */
 .inputs, .bonk-buttons {
     position: absolute;

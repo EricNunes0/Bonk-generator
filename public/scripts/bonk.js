@@ -135,5 +135,4 @@ function canvasToImage() {
     let canvas = document.getElementById('bonk-canvas');
     let dataURL = canvas.toDataURL();
     document.getElementById('input-canvas-image').value = dataURL;
-    
 }
