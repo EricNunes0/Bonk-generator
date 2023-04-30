@@ -38,7 +38,7 @@ app.get(`/`, (req, res) => {
 });
 
 app.post(`/`, function(req, res) {
-    res.status(200).sendFile(__dirname + "\\public\\pages\\sent.html");
+    res.status(200).sendFile(__dirname + "/public/pages/sent.html");
     Alert(client, req.body);
     //res.end();
 });
