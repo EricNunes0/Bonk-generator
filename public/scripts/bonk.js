@@ -49,6 +49,7 @@ bonkInputCenary.addEventListener("change", function() {
     });
     reader.readAsDataURL(this.files[0]);
     generateDownloadLink();
+    saveBackupBonkImage();
 });
 
 bonkInput0.addEventListener("change", function() {
@@ -59,6 +60,7 @@ bonkInput0.addEventListener("change", function() {
     });
     reader.readAsDataURL(this.files[0]);
     generateDownloadLink();
+    saveBackupBonkImage();
 });
 
 bonkInput1.addEventListener("change", function() {
@@ -69,19 +71,30 @@ bonkInput1.addEventListener("change", function() {
     });
     reader.readAsDataURL(this.files[0]);
     generateDownloadLink();
+    saveBackupBonkImage();
 });
 
 bonkInputDownload.addEventListener("click", function() {
     generateDownloadLink();
+    saveBackupBonkImage();
 });
 
-/* Evento de editar matriz da imagem */
+/* Evento de editar rgb da imagem */
 function rgbBonkEvent() {
     let r = document.getElementById("bonk-file-input-red").value;
     let g = document.getElementById("bonk-file-input-green").value;
     let b = document.getElementById("bonk-file-input-blue").value;
     rgbBonk(document.getElementById("bonk-canvas"), r, g, b);
 };
+
+/* Remover rgb da imagem */
+function rgbBonkEventRemove() {
+    if(backupImg) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(backupImg, 0, 0, canvas.width, canvas.height);
+        backupImg = "";
+    };
+}
 
 /* Editar canvas (imagem) */
 function BonkDogEditor(img, type, pos) {
@@ -159,13 +172,14 @@ function BonkDogEditor(img, type, pos) {
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     };
     image.crossOrigin = "anonymous";
+    saveBackupBonkImage();
     return image;
 };
 
 /* RGB */
 function rgbBonk(img, r, g, b) {
     if(backupImg) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(backupImg, 0, 0, canvas.width, canvas.height);
     }
     saveBackupBonkImage();

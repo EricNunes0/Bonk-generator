@@ -195,7 +195,7 @@ body {
     height: 100px;
     border: 2px dashed rgba(100, 50, 15, 0.3);
     border-radius: 10px;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 .bonk-input-areas:hover {
@@ -261,6 +261,8 @@ body {
 .input-images {
     width: 80px;
     height: 80px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
 }
 
 /* Spans dos botões */
@@ -270,6 +272,65 @@ body {
     font-family: var(--font-family-courier);
     font-weight: bold;
     text-align: center;
+}
+
+/* Todos os input range */
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 80%;
+    height: 10px;
+    background-color: rgb(220, 220, 220);
+    border-radius: 25px;
+}
+
+/* Input range R (vermelho) */
+input[type="range"]#bonk-file-input-red {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(230, 0, 0, 0.9) 100%);
+}
+
+/* Input range G (verde) */
+input[type="range"]#bonk-file-input-green {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 230, 0, 0.9) 100%);
+}
+
+/* Input range B (azul) */
+input[type="range"]#bonk-file-input-blue {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 0, 230, 0.9) 100%);
+}
+
+/* Slider dos inputs range */
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-image: linear-gradient(180deg, rgba(220, 220, 220, 1) 0%, rgba(200, 200, 200, 1) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* Div dos botões de rgb */
+.colorize-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botão de confirmar e remover rgb */
+.bonk-rgb-buttons {
+    width: 125px;
+    height: 30px;
+    background-color: transparent;
+    background-image: linear-gradient(180deg, rgb(220, 220, 220) 0%, rgba(200, 200, 200, 1) 100%);
+    color: #000;
+    font-size: 12pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    border-radius: 5px;
 }
 
 /* Footer da página */

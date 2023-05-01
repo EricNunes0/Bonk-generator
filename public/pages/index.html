@@ -77,10 +77,13 @@
                                 <span class = "input-area-spans">Enviar</span>
                             </div>
                         </form>
-                            <input type = "range" id = "bonk-file-input-red" max = "255" value = "0"/>
-                            <input type = "range" id = "bonk-file-input-green" max = "255" value = "0"/>
-                            <input type = "range" id = "bonk-file-input-blue" max = "255" value = "0"/>
-                            <button type = "button" id = "bonk-file-confirm-rgb" onclick = "rgbBonkEvent()">Alterar cor</button>
+                            <input type = "range" id = "bonk-file-input-red" max = "255" min = "0" value = "0"/>
+                            <input type = "range" id = "bonk-file-input-green" max = "255" min = "0" value = "0"/>
+                            <input type = "range" id = "bonk-file-input-blue" max = "255" min = "0" value = "0"/>
+                            <div class = "colorize-div">
+                                <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-confirm-rgb" onclick = "rgbBonkEvent()">Aplicar cor</button>
+                                <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-remove-rgb" onclick = "rgbBonkEventRemove()">Remover</button>
+                            </div>
                     </div>
                     <!--<audio controls autoplay loop>
                         <source src = "audios\aud_BG(8).wav" type = "audio/wav">
