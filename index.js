@@ -44,6 +44,6 @@ app.post(`/`, function(req, res) {
 });
 
 app.listen(process.env.PORT || port, () => {
-    //LoadBot(client, TOKEN);
+    LoadBot(client, TOKEN);
     console.log(`🐶 Servidor ligado na porta ${port}!`);
 });
