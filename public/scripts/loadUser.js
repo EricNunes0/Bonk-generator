@@ -1,5 +1,3 @@
-//import config from "../../config.json";
-
 function loadUser() {
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
@@ -20,8 +18,7 @@ function loadUser() {
         document.getElementById('input-hidden-username').value = username;
         document.getElementById('input-hidden-discriminator').value = discriminator;
         document.getElementById('input-hidden-avatar-url').value = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=512`;
-        console.log(id == "656295512219058196")
-        if(id == "656295512219058196") {
+        if(id == "656295512219058196" || id == "491411265294434317" || id == "856904666565705729") {
             document.getElementById("share-area").className = `bonk-input-areas`;
             document.getElementById("send-confirm-button").onclick = openOrCloseConfirm;
         }
@@ -33,7 +30,6 @@ function loadUser() {
 };
 
 function openOrCloseConfirm() {
-    console.log("AOAOA")
     let sendConfirmBar = document.querySelector("#send-confirm-area");
     if(sendConfirmBar.className == `send-confirm closed`) {
         sendConfirmBar.className = `send-confirm opened`;

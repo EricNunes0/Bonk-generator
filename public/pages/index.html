@@ -22,14 +22,14 @@
                 </div>
                 <div class = "nav-login-container">
                     <a class = "login-redirect-link" onclick = "loadUser()">
-                        <div class = "login-flex">
+                        <button class = "login-flex">
                             <div class = "login-avatar-div">
                                 <img src = "https://i.imgur.com/iIhG20U.png" alt = "login" class = "avatar-images" id = "nav-avatar-image">
                             </div>
                             <div class = "login-username-div">
                                 <span class = "login-spans" id = "login-username-span">Login</span>
                             </div>
-                        </div>
+                        </button>
                     </a>
                 </div>
             </nav>
@@ -133,15 +133,15 @@
                         <div class = "range-flex">
                             <div class = "range-div">
                                 <input type = "range" id = "range-input-r" max = "255" min = "0" value = "0"/>
-                                <output class = "range-outputs" id = "range-output-r">0</output>
+                                <input type = "number" class = "range-outputs" id = "range-output-r" max = "255" min = "0" value = "0" maxlength = "3">
                             </div>
                             <div class = "range-div">
                                 <input type = "range" id = "range-input-g" max = "255" min = "0" value = "0"/>
-                                <output class = "range-outputs" id = "range-output-g">0</output>
+                                <input type = "number" class = "range-outputs" id = "range-output-g" max = "255" min = "0" value = "0" maxlength = "3">
                             </div>
                             <div class = "range-div">
                                 <input type = "range" id = "range-input-b" max = "255" min = "0" value = "0"/>
-                                <output class = "range-outputs" id = "range-output-b">0</output>
+                                <input type = "number" class = "range-outputs" id = "range-output-b" max = "255" min = "0" value = "0" maxlength = "3">
                             </div>
                         </div>
                         <div class = "colorize-div">
