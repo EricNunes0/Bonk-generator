@@ -12,7 +12,7 @@ body {
     background-color: rgb(240, 240, 240);
     background-image: url("https://i.imgur.com/N2xjLwn.png");
     background-position: center;
-    background-size: 600px;
+    background-size: 400px;
     animation-name: backBonkAnimation;
     animation-duration: 15s;
     animation-timing-function: ease-in-out;
@@ -38,16 +38,24 @@ body {
 
 }
 
-.bonk-nav nav {
+/* Barra de navegação */
+.bonk-navigation-bar {
     height: 10vh;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
 }
 
+/* Link do título da barra de navegação */
+.nav-title-link {
+    text-decoration: none;
+}
+
+/* Título da barra de navegação */
 .nav-title {
     font-size: 24pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
 }
@@ -60,6 +68,44 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* Container do login na barra de navegação */
+.nav-login-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Link para redirecionar ao login */
+.login-redirect-link {
+    text-decoration: none;
+    border: 1px rgba(100, 50, 15, 0.2) dashed;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+/* Alinhar avatar e nome de usuário */
+.login-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Div do avatar no login */
+.login-avatar-div {
+    width: 40px;
+    height: 40px;
+}
+
+/* Imagens de avatar */
+.avatar-images {
+    width: 40px;
+    height: 40px;
+}
+
 /* Alinhar sessões de canvas e botões */
 .bonk-page-flex {
     height: 100%;
@@ -67,6 +113,15 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+/* Span do nome do usuário */
+#login-username-span {
+    color: #fff;
+    font-size: 12pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
 }
 
 @media screen and (min-width: 800px) {
@@ -182,18 +237,19 @@ body {
 .bonk-form-submit {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 25px;
 }
 
 /* Áreas dos botões (imagem, input, texto) */
 .bonk-input-areas {
     width: 80px;
     height: 100px;
-    border: 2px dashed rgba(100, 50, 15, 0.3);
+    border: 2px dashed rgba(100, 50, 15, 0.2);
     border-radius: 10px;
     transition: all 0.1s;
 }
@@ -274,29 +330,54 @@ body {
     text-align: center;
 }
 
+/* Alinhar divs dos inputs range */
+.range-flex {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Div dos inputs range */
+.range-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Todos os input range */
 input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 80%;
+    width: 150px;
     height: 10px;
     background-color: rgb(220, 220, 220);
     border-radius: 25px;
 }
 
+input[type="range"]:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+
 /* Input range R (vermelho) */
-input[type="range"]#bonk-file-input-red {
-    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(230, 0, 0, 0.9) 100%);
+input[type="range"]#range-input-r {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(255, 0, 0, 0.9) 100%);
 }
 
 /* Input range G (verde) */
-input[type="range"]#bonk-file-input-green {
-    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 230, 0, 0.9) 100%);
+input[type="range"]#range-input-g {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 255, 0, 0.9) 100%);
 }
 
 /* Input range B (azul) */
-input[type="range"]#bonk-file-input-blue {
-    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 0, 230, 0.9) 100%);
+input[type="range"]#range-input-b {
+    background-image: linear-gradient(90deg, rgba(100, 100, 100, 1) 0%, rgba(0, 0, 255, 0.9) 100%);
 }
 
 /* Slider dos inputs range */
@@ -308,6 +389,13 @@ input[type="range"]::-webkit-slider-thumb {
     background-image: linear-gradient(180deg, rgba(220, 220, 220, 1) 0%, rgba(200, 200, 200, 1) 100%);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
+}
+
+/* Outputs range */
+.range-outputs {
+    color:rgb(35, 30, 60);
+    font-size: 12pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Div dos botões de rgb */
@@ -323,14 +411,114 @@ input[type="range"]::-webkit-slider-thumb {
 /* Botão de confirmar e remover rgb */
 .bonk-rgb-buttons {
     width: 125px;
-    height: 30px;
+    height: 40px;
     background-color: transparent;
     background-image: linear-gradient(180deg, rgb(220, 220, 220) 0%, rgba(200, 200, 200, 1) 100%);
     color: #000;
     font-size: 12pt;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 100;
+    border: 0px;
     border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.bonk-rgb-buttons:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+
+/* Área de confirmar envio de imagem para backend */
+.send-confirm {
+    top: 0; 
+    position: fixed;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 0.3s;
+}
+
+.send-confirm.closed {
+    display: none;
+}
+
+/* Área para fechar barra de confirmação */
+.confirm-close-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de confirmação */
+.confirm-bar {
+    position: fixed;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+}
+
+@media screen and (min-width: 800px) {
+    .confirm-bar {
+        width: 70%;
+        margin: 15%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .confirm-bar {
+        width: 80%;
+        margin: 10%;
+    }
+}
+
+/* Barra de confirmação fechada */
+.confirm-bar.closed {
+    display: none;
+}
+
+/* Título da barra de confirmação */
+.confirm-title {
+    color: #303030;
+    font-size: 28pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 15px 0px;
+}
+
+/* Descrição da barra de confirmação */
+.confirm-description {
+    text-align: center;
+    font-size: 10pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #606060;
+    margin-top: 1rem;
+}
+
+/* Input de canal da mensagem */
+#confirm-channel-input {
+    width: 200px;
+    height: 30px;
+    text-align: left;
+    font-size: 12pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+/* Div dos botões de sim e não */
+.bonk-yes-no-buttons-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Footer da página */
@@ -342,7 +530,6 @@ input[type="range"]::-webkit-slider-thumb {
 /* Texto de quem criou o site */
 .footer-createdby {
     color: #fff;
-    font-size: 12pt;
-    font-family: var(--font-family-courier);
-    font-weight: lighter;
+    font-size: 14pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

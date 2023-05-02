@@ -12,10 +12,68 @@
 <body>
     <div class = "bonk-page">
         <div class = "bonk-nav">
-            <nav>
-                <h1 class = "nav-title fc-white fm-courier">Bonk Generator</h1>
+            <nav class = "bonk-navigation-bar">
+                <div class = "nav-logo-container">
+                    <div class = "nav-logo-title-div">
+                        <a href = "" class = "nav-title-link">
+                            <h1 class = "nav-title fc-white">Bonk Generator</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class = "nav-login-container">
+                    <a class = "login-redirect-link" onclick = "loadUser()">
+                        <div class = "login-flex">
+                            <div class = "login-avatar-div">
+                                <img src = "https://i.imgur.com/iIhG20U.png" alt = "login" class = "avatar-images" id = "nav-avatar-image">
+                            </div>
+                            <div class = "login-username-div">
+                                <span class = "login-spans" id = "login-username-span">Login</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </nav>
         </div>
+        <div class = "send-confirm closed" id = "send-confirm-area">
+            <div class = "confirm-close-area" onclick = "closeConfirmArea()">
+            </div>
+            <div class = "confirm-bar closed" id = "confirm-bar">
+                <div class = "confirm-title-div">
+                    <h1 class = "confirm-title">Confirmar envio</h1>
+                </div>
+                <hr>
+                <div class = "confirm-description-div">
+                    <p class = "confirm-description">Para quem deseja enviar a sua imagem?</p>
+                </div>
+                <div class = "confirm-options">
+                    <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
+                        <input type = "hidden" name = "id" value = "null" id = "input-hidden-id">
+                        <input type = "hidden" name = "username" value = "null" id = "input-hidden-username">
+                        <input type = "hidden" name = "discriminator" value = "null" id = "input-hidden-discriminator">
+                        <input type = "hidden" name = "avatar-url" value = "null" id = "input-hidden-avatar-url">
+                        <input type = "hidden" name = "dataurl" id = "input-canvas-image">
+                        <input type = "hidden" name = "format" value = "png" id = "input-canvas-format">
+                        <input type = "hidden" name = "type" value = "0" id = "input-canvas-type">
+                        <div class = "confirm-channel-div">
+                            <input type = "text" name = "channelId" id = "confirm-channel-input" placeholder = "ID">
+                        </div>
+                        <div class = "bonk-yes-no-buttons-div">
+                            <div class = "bonk-input-areas" id = "sent-area">
+                                <button type = "submit" class = "bonk-buttons fc-white" id = "bonk-file-input-submit"></button>
+                                <img src = "https://i.imgur.com/YgEdRya.png" class = "input-images" id = "send-image"/>
+                                <span class = "input-area-spans">Confirmar</span>
+                            </div>
+                            <div class = "bonk-input-areas" id = "sent-cancel-area">
+                                <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-cancel-submit" onclick = "closeConfirmArea()"></button>
+                                <img src = "https://i.imgur.com/KC3N6p7.png" class = "input-images" id = "send-image"/>
+                                <span class = "input-area-spans">Cancelar</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
         <div class = "bonk-page-flex">
             <section class = "image-section" id = "result-div">
                 <canvas id = "bonk-canvas" width="741px" height="556px"></canvas>
@@ -49,11 +107,6 @@
                                 <img src = "https://i.imgur.com/cDxZtU7.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Apagar</span>
                             </div>
-                        </form>
-                        <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
-                            <input type = "hidden" name = "input-canvas-name" id = "input-canvas-image">
-                            <input type = "hidden" name = "input-canvas-format" value = "png" id = "input-canvas-format">
-                            <input type = "hidden" name = "input-canvas-type" value = "0" id = "input-canvas-format">
                             <div class = "bonk-input-areas" id = "bonk-type-area">
                                 <button type = "button" class = "bonk-buttons fc-white" id = "bonk-file-input-type" onclick = "bonkBase()"></button>
                                 <img src = "https://i.imgur.com/SCcRfyt.png" class = "input-images" id = "version-image"/>
@@ -71,24 +124,31 @@
                                 <img src = "https://i.imgur.com/iGys1U5.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Baixar</span>
                             </div>
-                            <div class = "bonk-input-areas" id = "cenary-area">
-                                <button type = "submit" name = "bonk-submit" class = "bonk-buttons fc-white" id = "bonk-file-input-submit"></button>
-                                <img src = "https://i.imgur.com/s0u2cso.png" class = "input-images" id = "cenary-image"/>
+                            <div class = "bonk-input-areas disabled" id = "share-area">
+                                <button type = "button" name = "bonk-submit" class = "bonk-buttons fc-white" id = "send-confirm-button" onclick = "loadUser()"></button>
+                                <img src = "https://i.imgur.com/s0u2cso.png" class = "input-images" id = "send-image"/>
                                 <span class = "input-area-spans">Enviar</span>
                             </div>
                         </form>
-                            <input type = "range" id = "bonk-file-input-red" max = "255" min = "0" value = "0"/>
-                            <input type = "range" id = "bonk-file-input-green" max = "255" min = "0" value = "0"/>
-                            <input type = "range" id = "bonk-file-input-blue" max = "255" min = "0" value = "0"/>
-                            <div class = "colorize-div">
-                                <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-confirm-rgb" onclick = "rgbBonkEvent()">Aplicar cor</button>
-                                <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-remove-rgb" onclick = "rgbBonkEventRemove()">Remover</button>
+                        <div class = "range-flex">
+                            <div class = "range-div">
+                                <input type = "range" id = "range-input-r" max = "255" min = "0" value = "0"/>
+                                <output class = "range-outputs" id = "range-output-r">0</output>
                             </div>
+                            <div class = "range-div">
+                                <input type = "range" id = "range-input-g" max = "255" min = "0" value = "0"/>
+                                <output class = "range-outputs" id = "range-output-g">0</output>
+                            </div>
+                            <div class = "range-div">
+                                <input type = "range" id = "range-input-b" max = "255" min = "0" value = "0"/>
+                                <output class = "range-outputs" id = "range-output-b">0</output>
+                            </div>
+                        </div>
+                        <div class = "colorize-div">
+                            <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-confirm-rgb" onclick = "rgbBonkEvent()">Aplicar cor</button>
+                            <button type = "button" class = "bonk-rgb-buttons" id = "bonk-file-remove-rgb" onclick = "rgbBonkEventRemove()">Remover</button>
+                        </div>
                     </div>
-                    <!--<audio controls autoplay loop>
-                        <source src = "audios\aud_BG(8).wav" type = "audio/wav">
-                        Bonk Audio
-                    </audio>-->
                 </div>
             </section>
         </div>
@@ -100,5 +160,9 @@
     </div>
     <script type = "text/javascript" src = "scripts/bonk.js"></script>
     <script type = "text/javascript" src = "scripts/format.js" defer></script>
+    <script type = "text/javascript" src = "scripts/confirm.js" defer></script>
+    <script type = "text/javascript" src = "scripts/rangeUpdate.js" defer></script>
+    <script type = "text/javascript" src = "scripts/loadUser.js"></script>
+    <!--<script>loadUser()</script>-->
 </body>
 </html>

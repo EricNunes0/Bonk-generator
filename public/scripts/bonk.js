@@ -81,9 +81,9 @@ bonkInputDownload.addEventListener("click", function() {
 
 /* Evento de editar rgb da imagem */
 function rgbBonkEvent() {
-    let r = document.getElementById("bonk-file-input-red").value;
-    let g = document.getElementById("bonk-file-input-green").value;
-    let b = document.getElementById("bonk-file-input-blue").value;
+    let r = document.getElementById("range-input-r").value;
+    let g = document.getElementById("range-input-g").value;
+    let b = document.getElementById("range-input-b").value;
     rgbBonk(document.getElementById("bonk-canvas"), r, g, b);
 };
 
