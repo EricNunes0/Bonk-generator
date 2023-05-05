@@ -14,7 +14,7 @@ body {
 
 .bonk-nav {
     width: 100%;
-    background-image: linear-gradient(0deg, rgba(170, 130, 110, 1) 0%, rgba(220, 200, 140, 1) 100%);
+    background-image: linear-gradient(0deg, rgba(170, 130, 110, 1) 0%, rgba(205, 165, 135, 1) 100%);
     box-shadow: rgba(0, 0, 0, 1) 0px 0px 10px;
 
 }
@@ -96,6 +96,8 @@ body {
 .avatar-images {
     width: 40px;
     height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
 }
 
 /* Alinhar sessões de canvas e botões */
@@ -111,7 +113,7 @@ body {
 #login-username-span {
     color: #fff;
     font-size: 12pt;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 100;
     text-align: center;
 }
@@ -262,6 +264,19 @@ body {
     filter: grayscale(1);
 }
 
+/* Botão de ativar abas */
+.activate-aba-buttons {
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    background-color: transparent;
+    border-width: 0px;
+}
+
+.activate-aba-buttons:hover {
+    cursor: pointer;
+}
+
 /* Inputs de arquivos */
 .inputs, .bonk-buttons {
     position: absolute;
@@ -321,6 +336,246 @@ body {
     font-family: var(--font-family-courier);
     font-weight: bold;
     text-align: center;
+}
+
+/* Abas dos botões */
+.abas-container {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.abas-container.closed {
+    display: none;
+}
+
+/* Área pra fechar aba dos botões */
+.abas-close-area {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Formulários das abas dos botões */
+.abas-forms {
+    position: fixed;
+    z-index: 1;
+    width: 60%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+}
+
+/* Formulários das abas dos botões */
+.abas-forms.closed {
+    display: block;
+    width: 70%;
+    background-color: #fff;
+    margin: auto;
+}
+
+/* Títulos dos formulários das abas dos botões */
+.abas-titles {
+    font-size: 20pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 15px 0;
+}
+
+/* Área dos inputs/botões */
+.abas-input-divs {
+    border: 1px solid rgba(220, 220, 220, 1);
+    border-radius: 5px;
+    margin: auto 30px;
+}
+
+/* Lista dos botões de opções */
+.abas-options-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Opção selecionada */
+.abas-options-items.selected {
+    filter: brightness(0.95);
+}
+
+.abas-options-items:hover {
+    cursor: pointer;
+}
+
+/* Botões das opções */
+.abas-options-buttons {
+    background-color: #fff;
+    color: #000;
+    font-size: 11pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px;
+    border: 1px solid rgba(220, 220, 220, 1);
+}
+
+.abas-options-buttons:hover {
+    cursor: pointer;
+}
+
+/* Área de enviar imagem */
+.abas-enter-containers {
+    width: 95%;
+    border: 1px solid rgba(220, 220, 220, 1);
+    border-radius: 3px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+/* Área de carregar imagem */
+.drop-image-area {
+    height: 150px;
+}
+
+/* Aba da área de carregar imagem */
+.aba-enter-container.opened {
+    display: block;
+}
+
+.aba-enter-container.closed {
+    display: none;
+}
+
+/* Container das divs dos inputs de carregar arquivos */
+.image-drop-inputs-container {
+    position: absolute;
+}
+
+.image-drop-inputs-buttons-flex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Divs dos inputs de carregar arquivos */
+.image-drop-inputs-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs dos inputs de url de imagens */
+.image-url-inputs-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inputs de carregar arquivos */
+.image-drop-inputs {
+    width: 100%;
+    height: 100%;
+}
+
+.image-drop-inputs:hover {
+    cursor: pointer;
+}
+
+
+.image-drop-inputs::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.image-drop-inputs::before {
+    content: "";
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+/* Div da imagem e texto */
+.image-drop-custom-div {
+    position: absolute;
+    z-index: -1;
+}
+
+/* Alinhar imagem e texto da área de carregar imagem */
+.drop-flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ícone de carregar imagem */
+.drop-image {
+    width: 15px;
+    height: 15px;
+}
+
+/* Texto de carregar imagem */
+.drop-text {
+    font-size: 10pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Input do url da imagem */
+.image-url-inputs {
+    width: 80%;
+    height: 35px;
+    font-size: 10pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    padding: 0 5px;
+    border: 1px solid rgba(220, 220, 220, 1);
+    border-radius: 5px;
+}
+
+/* Div do botão de enviar url da imagem */
+.image-url-button-div {
+    background-color: #fff;
+}
+
+.image-url-button-div:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
+    transition: all 0.2s;
+}
+
+/* Botão de enviar url da imagem */
+.image-url-button {
+    width: 100px;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid rgba(220, 220, 220, 1);
+    border-radius: 5px;
+}
+
+.image-url-button:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
 }
 
 /* Alinhar divs dos inputs range */

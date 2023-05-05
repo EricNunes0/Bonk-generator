@@ -48,6 +48,10 @@ app.post(`/`, function(req, res) {
     //res.end();
 });
 
+process.on(`unhandledRejection`, (reason, promise) => {
+    console.error(`〔⚠️²〕Unhandled Rejection:`, reason);
+});
+
 app.listen(process.env.PORT || port, () => {
     LoadBot(client, TOKEN);
     console.log(`🐶 Servidor ligado na porta ${port}!`);

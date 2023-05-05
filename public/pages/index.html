@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class = "nav-login-container">
-                    <a class = "login-redirect-link" onclick = "loadUser()">
+                    <a class = "login-redirect-link" onclick = "loadUser(true)">
                         <button class = "login-flex">
                             <div class = "login-avatar-div">
                                 <img src = "https://i.imgur.com/iIhG20U.png" alt = "login" class = "avatar-images" id = "nav-avatar-image">
@@ -73,7 +73,65 @@
                 </div>
             </div>
         </div>
-        
+        <!-- Abas dos botões -->
+        <div class = "abas-container closed" id = "aba-container">
+            <div class = "abas-close-area" onclick = "closeAba()"></div>
+            <div class = "abas-forms" id = "aba-0">
+                <div class = "abas-title-divs" id = "aba-cenary-title-div">
+                    <h1 class = "abas-titles" id = "aba-cenary-title">Selecione um cenário</h1>
+                </div>
+                <div class = "abas-input-divs" id = "aba-cenary-input-div">
+                    <div class = "abas-input-containers">
+                        <div class = "abas-options-containers">
+                            <div class = "abas-options-list-div">
+                                <ul class = "abas-options-list">
+                                    <li class = "abas-options-items selected" id = "aba-option-0">
+                                        <button type = "button" class = "abas-options-buttons" id = "upload-button" onclick = "abasOptionsItems(0)">Enviar imagem</button>
+                                    </li>
+                                    <li class = "abas-options-items" id = "aba-option-1">
+                                        <button type = "button" class = "abas-options-buttons" id = "image-url-button" onclick = "abasOptionsItems(1)">URL da imagem</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class = "abas-enter-containers">
+                            <div class = "aba-enter-container opened" id = "aba-enter-0">
+                                <div class = "drop-image-area">
+                                    <div class = "image-drop-inputs-div">
+                                        <input type = "file" class = "image-drop-inputs" id = "bonk-file-input-cenary" accept = "image/jpeg, image/png, image/jpg"/>
+                                        <output></output>
+                                        <div class = "image-drop-custom-div">
+                                            <div class = "drop-flex">
+                                                <div class = "drop-image-div">
+                                                    <img class = "drop-image" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1200px-Picture_icon_BLACK.svg.png">
+                                                </div>
+                                                <div class = "drop-text-div">
+                                                    <p class = "drop-text">Carregar imagem</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "aba-enter-container closed" id = "aba-enter-1">
+                                <div class = "drop-image-area">
+                                    <div class = "image-drop-inputs-buttons-flex">
+                                        <div class = "image-url-inputs-div">
+                                            <input type = "text" class = "image-url-inputs" id = "image-url-cenary" placeholder = "https://"/>
+                                            <output></output>
+                                        </div>
+                                        <div class = "image-url-button-div">
+                                            <button type = "button" class = "image-url-button" onclick = "imageURLCenary()">Enviar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class = "bonk-page-flex">
             <section class = "image-section" id = "result-div">
                 <canvas id = "bonk-canvas" width="741px" height="556px"></canvas>
@@ -85,8 +143,7 @@
                     <div class = "forms-div">
                         <form class = "bonk-form">
                             <div class = "bonk-input-areas" id = "cenary-area">
-                                <input type = "file" class = "inputs fc-white" id = "bonk-file-input-cenary" accept = "image/jpeg, image/png, image/jpg"/>
-                                <output></output>
+                                <button type = "button" class = "activate-aba-buttons" onclick = "openAba(0)"></button>
                                 <img src = "https://i.imgur.com/WjNHdOu.png" class = "input-images" id = "cenary-image"/>
                                 <span class = "input-area-spans">Cenário</span>
                             </div>
@@ -154,15 +211,16 @@
         </div>
         <div class = "bonk-footer-div">
             <footer class = "bonk-footer">
-                <p class = "footer-createdby">Criado por Eric2605</p>
+                <p class = "footer-createdby">Bonk Generator</p>
             </footer>
         </div>
     </div>
+    <script type = "text/javascript" src = "scripts/abas.js" defer></script>
     <script type = "text/javascript" src = "scripts/bonk.js"></script>
     <script type = "text/javascript" src = "scripts/format.js" defer></script>
     <script type = "text/javascript" src = "scripts/confirm.js" defer></script>
     <script type = "text/javascript" src = "scripts/rangeUpdate.js" defer></script>
     <script type = "text/javascript" src = "scripts/loadUser.js"></script>
-    <!--<script>loadUser()</script>-->
+    <script>loadUser()</script>
 </body>
 </html>

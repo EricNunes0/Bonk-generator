@@ -10,11 +10,11 @@ var imagesSaved = {
     "bonk0": null,
     "bonk1": null
 };
-var backupImg = "";
+let backupImg = "";
 
 const bonkBaseImages = [
     "https://i.imgur.com/SCcRfyt.png",
-    "img_Bonk(1).png"
+    "https://i.imgur.com/vslW1uB.png"
 ];
 
 /* Criando canvas */
@@ -51,6 +51,51 @@ bonkInputCenary.addEventListener("change", function() {
     generateDownloadLink();
     saveBackupBonkImage();
 });
+
+/* Função de fechar todas as aba de inserir imagem */
+function closeAbas() {
+    document.querySelector("#aba-container").className = `abas-container closed`;
+}
+
+/* Função para checar se uma imagem existe */
+function checkImage(imageSrc, callback) {
+    let img = new Image();
+    img.src = imageSrc;
+    if (img.complete) {
+        callback(true);
+    } else {
+        img.onload = () => {
+            callback(true);
+        };
+        img.onerror = () => {
+            callback(false);
+        };
+    }
+}
+
+/* Função para carregar cenário com url */
+async function imageURLCenary() {
+    let imageURL = document.getElementById("image-url-cenary").value;
+    let blob = await fetch(imageURL).then(r => r.blob());
+    checkImage(imageURL, (exists) => {
+        if(exists) {
+            console.log('Imagem encontrada!');
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                upImg = reader.result;
+                BonkDogEditor(upImg, 0, 0);
+            });
+            reader.readAsDataURL(blob);
+            console.log(blob);
+            generateDownloadLink();
+            saveBackupBonkImage();
+            closeAbas();
+            console.log("Imagem carregada!");
+        } else {
+            console.error('Esta imagem não existe, ou possui um formato inválido.');
+        };
+    });
+};
 
 bonkInput0.addEventListener("change", function() {
     const reader = new FileReader();
@@ -101,19 +146,10 @@ function BonkDogEditor(img, type, pos) {
     /* Resetando canvas */
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const image = new Image();
-    let imageCenary, imagesBonk = [null, null];
     if(type == 0) {
         imagesSaved.cenary = img;
     } else if(type == 1) {
         imagesSaved[`bonk${pos}`] = img;
-    };
-    if(imagesSaved.cenary) {
-        imageCenary = imagesSaved.cenary;
-    };
-    for(let i = 0; i <= 1; i++) {
-        if(imagesSaved[`bonk${i}`]) {
-            imagesBonk[i] = imagesSaved[`bonk${i}`];
-        };
     };
     let positions, arcs;
     if(imagesSaved.base == 0) {
@@ -127,7 +163,7 @@ function BonkDogEditor(img, type, pos) {
             [555, 267, 80]
         ];
     } else if(imagesSaved.base == 1) {
-        image.src = "img_Bonk(1).png";        
+        image.src = "https://i.imgur.com/vslW1uB.png";        
         positions = [
             [70, 138, 130, 125],
             [491, 62, 119, 118]
@@ -179,7 +215,7 @@ function BonkDogEditor(img, type, pos) {
 /* RGB */
 function rgbBonk(img, r, g, b) {
     if(backupImg) {
-        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+        console.log(backupImg);
         ctx.drawImage(backupImg, 0, 0, canvas.width, canvas.height);
     }
     saveBackupBonkImage();
@@ -203,9 +239,11 @@ function rgbBonk(img, r, g, b) {
 
 /* Salvas imagem de backup */
 function saveBackupBonkImage() {
-    const bonkTemp = document.getElementById('bonk-canvas').toDataURL();
+    const bonkTemp = document.getElementById('bonk-canvas');
+    bonkTemp.crossOrigin = "anonymous";
+    let bonkTempDataURL = bonkTemp.toDataURL();
     let bonkTempImg = new Image();
-    bonkTempImg.src = bonkTemp;
+    bonkTempImg.src = bonkTempDataURL;
     backupImg = bonkTempImg;
 }
 
