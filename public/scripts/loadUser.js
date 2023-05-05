@@ -7,7 +7,7 @@ function loadUser(click) {
 
     if(!accessToken) {
         if(click == true) {
-            return window.location.replace(localhostOAuth);
+            return window.location.replace(onlineOAuth);
         };
         return;
     };
