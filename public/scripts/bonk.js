@@ -74,25 +74,33 @@ function checkImage(imageSrc, callback) {
 }
 
 /* Função para carregar cenário com url */
-async function imageURLCenary() {
+function imageURLCenary() {
     let imageURL = document.getElementById("image-url-cenary").value;
-    let blob = await fetch(imageURL).then(r => r.blob());
+    let blob = fetch(imageURL).then((res) => {
+        res.blob();
+    }).catch((e) => {
+        console.log("Erro 1")
+        document.getElementById("image-url-error-span").innerText = e;
+    });
     checkImage(imageURL, (exists) => {
         if(exists) {
             console.log('Imagem encontrada!');
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                upImg = reader.result;
-                BonkDogEditor(upImg, 0, 0);
-            });
-            reader.readAsDataURL(blob);
-            console.log(blob);
-            generateDownloadLink();
-            saveBackupBonkImage();
-            closeAbas();
+            try {
+                const reader = new FileReader();
+                reader.addEventListener("load", () => {
+                    upImg = reader.result;
+                    BonkDogEditor(upImg, 0, 0);
+                });
+                reader.readAsDataURL(blob);
+                generateDownloadLink();
+                saveBackupBonkImage();
+                closeAbas();
+            } catch (e) {
+                document.getElementById("image-url-error-span").innerText = e;
+            };
             console.log("Imagem carregada!");
         } else {
-            console.error('Esta imagem não existe, ou possui um formato inválido.');
+            document.getElementById("image-url-error-span").innerText = `Esta imagem não existe, ou possui um formato inválido.`;
         };
     });
 };

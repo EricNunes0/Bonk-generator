@@ -46,7 +46,7 @@
                     <p class = "confirm-description">Para quem deseja enviar a sua imagem?</p>
                 </div>
                 <div class = "confirm-options">
-                    <form class = "bonk-form-submit" method = "post" action = "/" onsubmit = "canvasToImage()">
+                    <form class = "bonk-form-submit" method = "post" action = "/send" onsubmit = "canvasToImage()">
                         <input type = "hidden" name = "id" value = "null" id = "input-hidden-id">
                         <input type = "hidden" name = "username" value = "null" id = "input-hidden-username">
                         <input type = "hidden" name = "discriminator" value = "null" id = "input-hidden-discriminator">
@@ -114,17 +114,17 @@
                                 </div>
                             </div>
                             <div class = "aba-enter-container closed" id = "aba-enter-1">
-                                <div class = "drop-image-area">
+                                <form class = "image-url-form" method = "post" action = "/">
                                     <div class = "image-drop-inputs-buttons-flex">
                                         <div class = "image-url-inputs-div">
-                                            <input type = "text" class = "image-url-inputs" id = "image-url-cenary" placeholder = "https://"/>
-                                            <output></output>
+                                            <input type = "text" name = "url" class = "image-url-inputs" id = "image-url-cenary" placeholder = "https://"/>
                                         </div>
                                         <div class = "image-url-button-div">
-                                            <button type = "button" class = "image-url-button" onclick = "imageURLCenary()">Enviar</button>
+                                            <input type = "submit" class = "image-url-button" value = "Enviar" onclick = "imageURLCenary()"></button>
                                         </div>
+                                        <span id = "image-url-error-span"></span>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -437,8 +437,8 @@ body {
     margin-bottom: 10px;
 }
 
-/* Área de carregar imagem */
-.drop-image-area {
+/* Área/formulário de carregar imagem */
+.drop-image-area, .image-url-form {
     height: 150px;
 }
 
@@ -576,6 +576,13 @@ body {
 .image-url-button:hover {
     cursor: pointer;
     filter: brightness(0.95);
+}
+
+/* Span de erro ao enviar url da imagem */
+#image-url-error-span {
+    color: #f00;
+    font-size: 8pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Alinhar divs dos inputs range */

@@ -13,7 +13,6 @@ function openAba(id) {
 function abasOptionsItems(id) {
     let optionsItems = document.getElementsByClassName(`abas-options-items`);
     for(let i = 0; i <= optionsItems.length - 1; i++) {
-        console.log(document.getElementById(`aba-enter-${id}`).className);
         if(id == i) {
             document.getElementById(`aba-option-${i}`).className = `abas-options-items selected`;
             document.getElementById(`aba-enter-${i}`).className = `aba-enter-container opened`;
